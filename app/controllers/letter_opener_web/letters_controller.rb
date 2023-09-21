@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-unless Rails.respond_to?(:autoloaders) && Rails.autoloaders.zeitwerk_enabled?
-  require_dependency 'letter_opener_web/application_controller'
-end
-
 module LetterOpenerWeb
-  class LettersController < ApplicationController
+  class LettersController < ::ActionController::Base
     before_action :check_style, only: :show
     before_action :load_letter, only: %i[show attachment destroy]
 
